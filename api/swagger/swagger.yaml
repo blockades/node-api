@@ -1,0 +1,89 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: OpenBlockChain
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths
+basePath: /
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /visualizations/{id}/{period}/{unit}:
+    x-swagger-router-controller: visualizations
+    get:
+      description: Returns a specific visualization from Cassandra
+      operationId: getviz
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+    parameters:
+      - name: id
+        in: path
+        description: ID of visualization
+        required: true
+        type: string
+      - name: period
+        in: path
+        description: period of visualization
+        required: true
+        type: string
+      - name: unit
+        in: path
+        description: unit of visualization
+        required: true
+        type: string
+  /transactions/{id}:
+    x-swagger-router-controller: transactions
+    get:
+      description: Returns a specific transaction from Cassandra
+      operationId: gettx
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              txid:
+                type: string
+    parameters:
+      - name: id
+        in: path
+        description: ID of transaction
+        required: true
+        type: string
+  /blocks/{id}:
+    x-swagger-router-controller: blocks
+    get:
+      description: Returns a specific block from Cassandra
+      operationId: getblock
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              height:
+                type: integer
+    parameters:
+      - name: id
+        in: path
+        description: ID of block
+        required: true
+        type: string
+  /swagger:
+    x-swagger-pipe: swagger_raw
