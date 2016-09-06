@@ -32,6 +32,10 @@ function getviz(req, res) {
       return;
     }
 
-    res.json(result.rows[0]);
+    var row = result.rows[0];
+    for (var i = 0; i < row.data.length; i++) {
+      row.data[i] = JSON.parse(row.data[i]);
+    }
+    res.json(row);
   });
 }
