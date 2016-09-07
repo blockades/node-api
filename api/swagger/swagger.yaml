@@ -31,6 +31,10 @@ paths:
             properties:
               id:
                 type: string
+              period:
+                type: string
+              unit:
+                type: string
     parameters:
       - name: id
         in: path
@@ -63,7 +67,7 @@ paths:
     parameters:
       - name: id
         in: path
-        description: ID of transaction
+        description: Hash of transaction
         required: true
         type: string
   /blocks/{id}:
@@ -82,7 +86,7 @@ paths:
     parameters:
       - name: id
         in: path
-        description: ID of block
+        description: Hash or height of block
         required: true
         type: string
   /swagger:

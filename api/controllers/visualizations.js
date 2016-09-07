@@ -3,10 +3,10 @@
 var client = require('../cassandra');
 
 module.exports = {
-  getviz: getviz
+  getviz: getVisualization
 };
 
-function getviz(req, res) {
+function getVisualization(req, res) {
   var id = req.swagger.params.id.value;
   var period = req.swagger.params.period.value;
   var unit = req.swagger.params.unit.value;

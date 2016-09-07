@@ -3,10 +3,10 @@
 var client = require('../cassandra');
 
 module.exports = {
-  gettx: gettx
+  gettx: getTransaction
 };
 
-function gettx(req, res) {
+function getTransaction(req, res) {
   var id = req.swagger.params.id.value;
 
   var query = 'SELECT * FROM transactions WHERE txid=?';
