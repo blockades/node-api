@@ -28,8 +28,8 @@ function getBlockByHeight(req, res, height) {
     console.log('response:', err, result);
 
     if (err) {
-      req.status(400);
-      req.json({ error: err });
+      res.status(400);
+      res.json({ error: err });
       console.error(err);
       return;
     }
