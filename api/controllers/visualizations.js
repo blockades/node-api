@@ -22,7 +22,10 @@ function getVisualization(req, res) {
     console.log('response:', err, result);
 
     if (err) {
-      throw err;
+      req.status(400);
+      req.json({ error: err });
+      console.error(err);
+      return;
     }
 
     if (!result || !result.rows[0]) {

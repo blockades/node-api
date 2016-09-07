@@ -28,7 +28,10 @@ function getBlockByHeight(req, res, height) {
     console.log('response:', err, result);
 
     if (err) {
-      throw err;
+      req.status(400);
+      req.json({ error: err });
+      console.error(err);
+      return;
     }
 
     if (!result || !result.rows[0]) {
@@ -53,7 +56,10 @@ function getBlockByHash(req, res, hash) {
     console.log('response:', err, result);
 
     if (err) {
-      throw err;
+      req.status(400);
+      req.json({ error: err });
+      console.error(err);
+      return;
     }
 
     if (!result || !result.rows[0]) {
