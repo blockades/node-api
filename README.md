@@ -1,1 +1,1 @@
-# openblockchain node-api
+# Skeleton project for Swagger
