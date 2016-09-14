@@ -36,9 +36,12 @@ function getVisualization(req, res) {
     }
 
     var row = result.rows[0];
-    for (var i = 0; i < row.data.length; i++) {
-      row.data[i] = JSON.parse(row.data[i]);
+    if (row.data && (typeof row.data[0] === 'string')) {
+      for (var i = 0; i < row.data.length; i++) {
+        row.data[i] = JSON.parse(row.data[i]);
+      }
     }
+
     res.json(row);
   });
 }
